@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Generator Hub</title>
+    <style>
+        :root {
+            --bg-color: #2c3e50;
+            --text-color: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 450px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            min-height: 60px;
+            line-height: 1.5;
+        }
+        button {
+            background-color: #ffffff;
+            color: #2c3e50;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ Random Inspiration Hub</h1>
+        <p id="quote-display">Click the button below to generate a new vibe!</p>
+        <button id="generate-btn">Roll the Dice</button>
+    </div>
+
+    <script>
+        const advices = [
+            "Drink a glass of water right now. Your brain will thank you.",
+            "If it won't matter in 5 years, don't spend more than 5 minutes upset about it.",
+            "An elegant solution is often the simplest one.",
+            "Rest is a core part of productivity, not a reward for it.",
+            "Before you reply to that email, read it over one more time.",
+            "You cannot control the actions of others, only your reaction to them.",
+            "Clear workspace, clear mind. Take two minutes to tidy up.",
+            "The expert at anything was once a beginner."
+        ];
+
+        const palette = [
+            "#16a085", "#27ae60", "#2980b9", "#8e44ad", 
+            "#2c3e50", "#d35400", "#c0392b", "#7f8c8d"
+        ];
+
+        const quoteDisplay = document.getElementById('quote-display');
+        const generateBtn = document.getElementById('generate-btn');
+
+        function generateRandomVibe() {
+            // Pick random indices
+            const randomAdvice = advices[Math.floor(Math.random() * advices.length)];
+            const randomColor = palette[Math.floor(Math.random() * palette.length)];
+
+            // Apply modifications to the page
+            quoteDisplay.textContent = `"${randomAdvice}"`;
+            document.documentElement.style.setProperty('--bg-color', randomColor);
+        }
+
+        // Attach event listener
+        generateBtn.addEventListener('click', generateRandomVibe);
+    </script>
+</body>
+</html>
